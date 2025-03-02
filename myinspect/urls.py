@@ -7,7 +7,7 @@ from .views import add_visitor, visitor_list
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('index/', views.index, name='index'),
     path('about/', views.about_us, name='about_us'),
     path('contact/', views.contact, name='contact_us'), 
     path("login/", views.login_view, name="login_view"),  # Custom login route
