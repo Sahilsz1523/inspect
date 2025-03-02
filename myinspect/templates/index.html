@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{%block content%}
+        <!-- Main Content with container-fluid -->
+        <div class="content container-fluid text-center">
+            <h1 class="display-4">Welcome to Inspect</h1>
+            <p class="lead">This is my first Django app .</p>
+
+            <!-- Creator Profiles Section -->
+            <div class="row mt-1 justify-content-center">
+                <!-- Creator 1 -->
+                <div class="col-md-2">
+                    <div class="card">
+                        <img src="{% static 'images/sahil.jpg' %}"  class="card-img-top" alt="Creator 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Creator 1</h5>
+                            <p class="card-text">SAHIL S Z<br>The project has been created by SAHIL S Z.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Creator 2 -->
+                <div class="col-md-2">
+                    <div class="card">
+                        <img src="{% static 'images/ravi.jpg' %}" class="card-img-top" alt="Creator 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Creator 2</h5>
+                            <p class="card-text">RAVICHAMDRAN M<br>The project has been created by RAVICHAMDRAN M</br></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{%endblock%}
+
+

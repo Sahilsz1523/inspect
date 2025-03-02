@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section id="about-intro" class="about-section">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-md-6">
+              <img src="{% static 'images/monitor.webp' %}" alt="Security Monitoring" class="img-fluid about-image">
+          </div>
+          <div class="col-md-6 about-text">
+              <h2>Who We Are</h2>
+              <p>
+                  <strong>Inspect</strong> is a cutting-edge visitor management system designed to enhance security in residential apartments. 
+                  Our platform simplifies visitor tracking, allowing residents and security personnel to manage and monitor visitors efficiently.
+              </p>
+              <p>
+                  With Inspect, traditional logbooks are replaced with a secure digital solution that offers real-time visitor data collection, 
+                  photo capturing, instant notifications, and seamless recordkeeping. We empower residential communities to ensure safety and 
+                  accountability for every visitor.
+              </p>
+          </div>
+      </div>
+
+      <!-- Why Inspect? Section -->
+      <div class="row mt-5 about-text">
+          <div class="col-md-12">
+              <h2>Why Inspect?</h2>
+          </div>
+          <div class="col-md-6">
+              <h4 class="text-danger">🔴 Challenges with Traditional Systems</h4>
+              <ul>
+                  <li>Manual logbooks are <strong>slow, unreliable, and easy to manipulate.</strong></li>
+                  <li>Visitors’ details are <strong>difficult to retrieve</strong> in case of a security concern.</li>
+                  <li>No real-time alerts for <strong>residents about their visitors.</strong></li>
+              </ul>
+          </div>
+          <div class="col-md-6">
+              <h4 class="text-success">🟢 How Inspect Helps</h4>
+              <ul>
+                  <li><strong>Digital recordkeeping</strong> eliminates paperwork and errors.</li>
+                  <li><strong>Instant visitor notifications</strong> keep residents informed.</li>
+                  <li><strong>Photo capturing</strong> improves identification accuracy.</li>
+                  <li><strong>Easy access to visitor history</strong> for better security insights.</li>
+              </ul>
+          </div>
+      </div>
+
+      <!-- Features & Benefits Section -->
+      <div class="row mt-5 about-text">
+          <div class="col-md-12 text-center">
+              <h2>Features & Benefits</h2>
+          </div>
+          <div class="col-md-12">
+              <table class="table table-bordered features-table">
+                  <thead class="table-dark">
+                      <tr>
+                          <th>Feature</th>
+                          <th>Benefit</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>📝 <strong>Digital Visitor Log</strong></td>
+                          <td>No more manual registers; easily searchable visitor history</td>
+                      </tr>
+                      <tr>
+                          <td>📸 <strong>Photo Capture</strong></td>
+                          <td>Enhances security by attaching visitor images</td>
+                      </tr>
+                      <tr>
+                          <td>🔔 <strong>Real-time Notifications</strong></td>
+                          <td>Residents receive alerts when a visitor arrives</td>
+                      </tr>
+                      <tr>
+                          <td>📊 <strong>Visitor Analytics</strong></td>
+                          <td>Track visitor patterns and security insights</td>
+                      </tr>
+                      <tr>
+                          <td>🚪 <strong>Gate Security Integration</strong></td>
+                          <td>Guards can quickly approve or deny entry</td>
+                      </tr>
+                      <tr>
+                          <td>🌐 <strong>Cloud-Based System</strong></td>
+                          <td>Access visitor data securely from anywhere</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+      <!-- Mission & Vision Section -->
+      <div class="row mt-5 about-text text-center">
+          <div class="col-md-12">
+              <h2>Our Mission & Vision</h2>
+          </div>
+          <div class="col-md-6">
+              <h4 class="text-primary">🎯 Our Mission</h4>
+              <p>
+                  To revolutionize residential security with a smart, efficient, and reliable visitor management system.
+              </p>
+          </div>
+          <div class="col-md-6">
+              <h4 class="text-success">🚀 Our Vision</h4>
+              <p>
+                  A future where every residential community is secured with advanced digital tracking, ensuring safety and peace of mind for all.
+              </p>
+          </div>
+      </div>
+
+      <!-- Call-to-Action Section -->
+      <div class="row mt-5 about-text text-center">
+          <div class="col-md-12">
+              <h2>🚀 Ready to Enhance Security?</h2>
+              <p>
+                  Contact us today and see how <strong>Inspect</strong> can make your community safer and smarter!
+              </p>
+              <p>
+                  📩 <strong>Email:</strong> <a href="mailto:sahilsn2005@gmail.com">sahilsn2005@gmail.com</a>
+                  <br>
+                  📞 <strong>Phone:</strong> <a href="tel:9500556699">+919500556699</a>
+              </p>
+              <div class="social-icons">
+                  <a href="https://www.instagram.com/sahil_sz_23" target="_blank" class="social-link">
+                      <img src="{% static 'images/instagram.jpg' %}" alt="Instagram">
+                  </a>
+                  <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="social-link">
+                      <img src="{% static 'images/linkedin.jpg' %}" alt="LinkedIn">
+                  </a>
+                  <a href="https://wa.me/+919500556699" target="_blank" class="social-link">
+                      <img src="{% static 'images/wathsapp.jpg' %}" alt="WhatsApp">
+                  </a>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</section>
+{% endblock %}

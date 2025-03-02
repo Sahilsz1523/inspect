@@ -1,0 +1,183 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #003366, #0055a5); /* Gradient background */
+    display: flex;
+    flex-direction: column;
+    color: white;
+    min-height: 100vh; /* Ensure full height */
+    margin: 0;
+}
+
+/* Ensure full page height */
+html, body {
+    height: 100%;
+}
+
+/* Wrapper for full-page layout */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures full height */
+}
+
+/* Main Content Section */
+.content {
+    flex: 1; /* Fills available space */
+    padding: 20px; /* Optional padding */
+}
+
+/* Full-Page Footer */
+footer {
+    background-color: #003366; /* Dark Blue */
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 50px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Ensures it stays in flow */
+}
+
+/* Navbar Styling */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo inside Navbar */
+.logo {
+    width: 50px; /* Adjust size */
+    height: auto;
+    margin-right: 10px;
+}
+
+/* Prevent Content Overlap with Fixed Navbar */
+.container-fluid {
+    padding-top: 70px; /* Adjust for fixed navbar */
+}
+
+/* Underline the navbar links */
+.navbar-nav .nav-link {
+    color: white; /* Default text color */
+    padding-bottom: 5px; /* Space for the underline */
+    transition: all 0.3s ease-in-out;
+}
+
+/* Keep underline for active link */
+.navbar-nav .nav-link.active {
+    border-bottom: 3px solid orange; /* Underline color */
+    font-weight: bold;
+}
+
+/* Optional: Underline on hover */
+.navbar-nav .nav-link:hover {
+    border-bottom: 3px solid lightblue;
+}
+
+/* Change Login Button Color */
+.btn-primary {
+    background-color: green; /* Change to your preferred color */
+    border-color: #004488;
+}
+
+/* Headings */
+h1 {
+    font-family: "Verdana", sans-serif; /* Change the font */
+    font-size: 24px; /* Adjust size */
+    font-weight: bold; /* Make it bold */
+    color: white; /* Change color */
+}
+
+/* Visitor List Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+    text-transform: uppercase;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Image Styling */
+img {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Section Titles */
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+section.about-section {
+    padding: 80px 0;
+    background-color: #f8f9fa !important; /* Ensure the background applies */
+    text-align: center;
+}
+
+section.about-section .container {
+    max-width: 1200px; /* Limit max width for better readability */
+}
+
+/* Heading Styles */
+section.about-section h2 {
+    color: #333;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styles */
+section.about-section p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Image Styling */
+section.about-section img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    section.about-section h2 {
+        text-align: center;
+    }
+    
+    section.about-section p {
+        text-align: center;
+    }
+    
+    section.about-section img {
+        margin-bottom: 20px;
+    }
+}
