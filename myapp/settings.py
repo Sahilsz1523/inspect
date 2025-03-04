@@ -58,21 +58,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'myapp.wsgi.application'
 
 # Determine environment (local or production)
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'local')  # Default to 'local'
+import os
+import socket
 
-# Database Configuration
-if ENVIRONMENT == 'production':  # Use PostgreSQL on Render
-   DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myinspect',
-        'USER': 'root',
-        'PASSWORD': '6kNu2YVaz5Nf4CEaw7hv0mPbnK4ypjf2',
-        'HOST': 'dpg-cv3h9otds78s73bdkj4g-a.oregon-postgres.render.com',
-        'PORT': '5432',
+# Detect if running on Render or locally
+if "render.com" in socket.gethostname():
+    # Production: Use PostgreSQL on Render
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'myinspect',
+            'USER': 'root',
+            'PASSWORD': '6kNu2YVaz5Nf4CEaw7hv0mPbnK4ypjf2',
+            'HOST': 'dpg-cv3h9otds78s73bdkj4g-a.oregon-postgres.render.com',
+            'PORT': '5432',
+        }
     }
-}
-else:  # Use MySQL locally
+else:
+    # Local Development: Use MySQL
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -86,6 +89,10 @@ else:  # Use MySQL locally
             },
         }
     }
+
+# Debugging info (Prints which database is being used)
+print(f"Using database: {DATABASES['default']['ENGINE']}")
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
