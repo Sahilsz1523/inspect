@@ -130,14 +130,14 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files settings
-STATIC_URL = 'static/'  # ✅ Always use a leading slash
+STATIC_URL = '/static/'  # ✅ Always use a leading slash
 
 # Collects static files here when running `collectstatic`
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # ✅ Correct path for deployment
 
 # Extra locations for static files (for development only)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'inspect', 'static'),  # ✅ Your app’s static folder
+    os.path.join(BASE_DIR, 'myinspect', 'static'),  # ✅ Your app’s static folder
 ]
 
 
