@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,17 +81,36 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'myinspect',
-        'USER': 'root',
-        'PASSWORD': '2005',
-        'HOST': 'localhost',
-        'PORT': '3307', 
+import os
+
+# Check if running on Render (Render sets 'RENDER' env variable)
+IS_RENDER = os.getenv('RENDER') is not None
+
+if IS_RENDER:
+    # ✅ Use Render MySQL database in production
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv('inspect'),
+            'USER': os.getenv('sahil'),
+            'PASSWORD': os.getenv('9500556699'),
+            'HOST': os.getenv('localhost'),  # Render database host
+            'PORT': os.getenv( '3306'),  # Default is 3306
+        }
     }
-        
+else:
+    # ✅ Use local MySQL database in development
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'myinspect',
+            'USER': 'root',
+            'PASSWORD': '2005',
+            'HOST': 'localhost',
+            'PORT': '3307',
+        }
     }
+
 
 
 
