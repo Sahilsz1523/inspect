@@ -91,9 +91,9 @@ if IS_RENDER:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.getenv('inspect'),
-            'USER': os.getenv('sahil'),
-            'PASSWORD': os.getenv('9500556699'),
+            'NAME': os.getenv('myinspect'),
+            'USER': os.getenv('root'),
+            'PASSWORD': os.getenv('2005'),
             'HOST': os.getenv('localhost'),  # Render database host
             'PORT': os.getenv( '3306'),  # Default is 3306
         }
