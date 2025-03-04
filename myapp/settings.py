@@ -62,16 +62,18 @@ import os
 import socket
 
 # Detect if running on Render or locally
+import socket
+
 if "render.com" in socket.gethostname():
     # Production: Use PostgreSQL on Render
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'myinspect',
-            'USER': 'root',
-            'PASSWORD': '6kNu2YVaz5Nf4CEaw7hv0mPbnK4ypjf2',
-            'HOST': 'dpg-cv3h9otds78s73bdkj4g-a.oregon-postgres.render.com',
-            'PORT': '5432',
+            'NAME': 'myinspect_xt03',  # ✅ Correct Database Name
+            'USER': 'myinspect_sahil',  # ✅ Correct Username
+            'PASSWORD': 'kaghxb2Di3ESAMWHGS4oUSsQN5mZG5xk',  # ✅ Correct Password
+            'HOST': 'dpg-cv3k035ds78s73bendj0-a.oregon-postgres.render.com',  # ✅ Correct Host
+            'PORT': '5432',  # ✅ Correct Port
         }
     }
 else:
@@ -89,6 +91,7 @@ else:
             },
         }
     }
+
 
 # Debugging info (Prints which database is being used)
 print(f"Using database: {DATABASES['default']['ENGINE']}")
