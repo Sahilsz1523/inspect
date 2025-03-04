@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -125,11 +126,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 import os
-from pathlib import Path
-# Use only this
 
+# Static files settings
 STATIC_URL = 'static/'
-'myinspect/static'
+
+# Ensure STATIC_ROOT is properly set
+STATIC_ROOT = os.path.join(BASE_DIR, 'inspect','static')  # ✅ Required for collectstatic
+
+# Ensure this exists if you're using local static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'staticfiles'),  # ✅ Ensure you have a /static/ directory
+]
 
 
 
