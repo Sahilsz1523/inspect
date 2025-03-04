@@ -84,6 +84,9 @@ WSGI_APPLICATION = 'myapp.wsgi.application'
 import os
 
 # Check if running on Render (Render sets 'RENDER' env variable)
+import os
+
+# Check if running on Render
 IS_RENDER = os.getenv('RENDER') is not None
 
 if IS_RENDER:
@@ -91,13 +94,19 @@ if IS_RENDER:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.getenv('myinspect'),
-            'USER': os.getenv('root'),
-            'PASSWORD': os.getenv('2005'),
-            'HOST': os.getenv('localhost'),  # Render database host
-            'PORT': os.getenv( '3306'),  # Default is 3306
+            'NAME': os.getenv('RENDER_DB_NAME', ''),  # ✅ Get from env variable
+            'USER': os.getenv('RENDER_DB_USER', ''),
+            'PASSWORD': os.getenv('RENDER_DB_PASSWORD', ''),
+            'HOST': os.getenv('RENDER_DB_HOST', ''),  # ✅ Important: Render MySQL host
+            'PORT': os.getenv('RENDER_DB_PORT', '3306'),  # ✅ Default MySQL port
+            'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"},
         }
     }
+
+    # 🔴 Debugging: Raise error if DB config is missing
+    if not DATABASES['default']['HOST']:
+        raise ValueError("🔴 RENDER_DB_HOST is missing! Set it in Render Environment Variables.")
+
 else:
     # ✅ Use local MySQL database in development
     DATABASES = {
@@ -110,6 +119,7 @@ else:
             'PORT': '3307',
         }
     }
+
 
 
 
