@@ -1,15 +1,15 @@
-/* General Styling */
+/* =================== GENERAL STYLES =================== */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #003366, #0055a5); /* Gradient background */
+    background: linear-gradient(to right, #003366, #0055a5);
+    color: white;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    color: white;
-    min-height: 100vh; /* Ensure full height */
-    margin: 0;
+    min-height: 100vh;
 }
 
-/* Ensure full page height */
+/* Ensure full-page height */
 html, body {
     height: 100%;
 }
@@ -18,166 +18,307 @@ html, body {
 .content-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures full height */
+    min-height: 100vh;
 }
 
-/* Main Content Section */
-.content {
-    flex: 1; /* Fills available space */
-    padding: 20px; /* Optional padding */
-}
-
-/* Full-Page Footer */
-footer {
-    background-color: #003366; /* Dark Blue */
-    color: white;
-    text-align: center;
-    width: 100%;
-    height: 50px; /* Adjust height as needed */
+/* =================== NAVBAR =================== */
+.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: relative; /* Ensures it stays in flow */
+    background-color: #002244;
+    padding: 15px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-/* Navbar Styling */
+/* Logo & Brand */
 .navbar-brand {
     display: flex;
     align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
 }
 
-/* Logo inside Navbar */
+/* Logo Image */
 .logo {
-    width: 50px; /* Adjust size */
+    width: 50px;
     height: auto;
     margin-right: 10px;
 }
 
-/* Prevent Content Overlap with Fixed Navbar */
-.container-fluid {
-    padding-top: 70px; /* Adjust for fixed navbar */
+/* Navbar Menu - Right Side */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
 }
 
-/* Underline the navbar links */
-.navbar-nav .nav-link {
-    color: white; /* Default text color */
-    padding-bottom: 5px; /* Space for the underline */
-    transition: all 0.3s ease-in-out;
+/* Menu Items */
+.nav-menu li {
+    display: inline;
 }
 
-/* Keep underline for active link */
-.navbar-nav .nav-link.active {
-    border-bottom: 3px solid orange; /* Underline color */
-    font-weight: bold;
-}
-
-/* Optional: Underline on hover */
-.navbar-nav .nav-link:hover {
-    border-bottom: 3px solid lightblue;
-}
-
-/* Change Login Button Color */
-.btn-primary {
-    background-color: green; /* Change to your preferred color */
-    border-color: #004488;
-}
-
-/* Headings */
-h1 {
-    font-family: "Verdana", sans-serif; /* Change the font */
-    font-size: 24px; /* Adjust size */
-    font-weight: bold; /* Make it bold */
-    color: white; /* Change color */
-}
-
-/* Visitor List Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 18px;
-    text-align: left;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-th, td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-}
-
-th {
-    background-color: #007BFF;
+.nav-link {
+    text-decoration: none;
     color: white;
-    text-transform: uppercase;
+    padding: 10px 15px;
+    transition: 0.3s;
+    border-radius: 5px;
 }
 
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Image Styling */
-img {
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-/* Section Titles */
-h2 {
-    text-align: center;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-section.about-section {
-    padding: 80px 0;
-    background-color: #f8f9fa !important; /* Ensure the background applies */
-    text-align: center;
-}
-
-section.about-section .container {
-    max-width: 1200px; /* Limit max width for better readability */
-}
-
-/* Heading Styles */
-section.about-section h2 {
-    color: #333;
-    font-size: 2.5rem;
+/* Active Page Styling */
+.nav-link.active {
+    background-color: #001122; /* Darker background for active page */
     font-weight: bold;
-    text-align: left;
-    margin-bottom: 20px;
 }
 
-/* Paragraph Styles */
-section.about-section p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.6;
-    text-align: justify;
+/* Hover Effect */
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ================= ABOUT US SECTION ================= */
+.about-section {
+    background: white;
+    padding: 50px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: black;
+}
+
+.about-text {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Image Styling */
-section.about-section img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.about-image {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design */
+/* ================= WHY INSPECT SECTION ================= */
+.text-danger {
+    color: #d9534f;
+    font-weight: bold;
+}
+
+.text-success {
+    color: #5cb85c;
+    font-weight: bold;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    font-size: 16px;
+    margin: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+
+/* ================= FEATURES TABLE ================= */
+.features-table {
+    background: white;
+    color: black;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.features-table thead {
+    background: #003366;
+    color: white;
+}
+
+.features-table th, 
+.features-table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.features-table tbody tr:hover {
+    background: #f1f1f1;
+}
+
+/* ================= MISSION & VISION SECTION ================= */
+.text-primary {
+    color: #0275d8;
+}
+
+.text-success {
+    color: #5cb85c;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ================= VISITOR LIST ================= */
+.visitor-card {
+    background: white;
+    color: black;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    transition: 0.3s ease-in-out;
+}
+
+/* Hover Effect for Visitor Card */
+.visitor-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ID Proof Image */
+.id-proof-img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* ================= SOCIAL ICONS ================= */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Small Icons */
+.social-icons img {
+    width: 25px;  /* Adjust the size */
+    height: 25px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+/* Hover Effect */
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
 @media (max-width: 768px) {
-    section.about-section h2 {
+    .about-text {
         text-align: center;
     }
-    
-    section.about-section p {
-        text-align: center;
+
+    .about-section {
+        padding: 30px 15px;
     }
-    
-    section.about-section img {
-        margin-bottom: 20px;
+
+    .features-table th, 
+    .features-table td {
+        padding: 10px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .visitor-card {
+        padding: 10px;
+    }
+}
+
+/* Creator Card Styling */
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Image Styling */
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Hover Effect */
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+/* Card Body */
+.card-body {
+    background: linear-gradient(135deg, #003366, #0055a5);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Slide-in Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Apply different animations for left and right cards */
+.col-md-2:first-child .card {
+    animation: slideFromLeft 1s ease-in-out;
+}
+
+.col-md-2:last-child .card {
+    animation: slideFromRight 1s ease-in-out;
+}
+
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
