@@ -58,26 +58,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'myapp.wsgi.application'
 
 # Determine environment (local or production)
+
 import os
 import socket
 
-# Detect if running on Render or locally
-import socket
 
 if "render.com" in socket.gethostname():
-    # Production: Use PostgreSQL on Render
+    # Production: Use MySQL on Railway
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'myinspect_xt03',  # ✅ Correct Database Name
-            'USER': 'myinspect_sahil',  # ✅ Correct Username
-            'PASSWORD': 'kaghxb2Di3ESAMWHGS4oUSsQN5mZG5xk',  # ✅ Correct Password
-            'HOST': 'dpg-cv3k035ds78s73bendj0-a.oregon-postgres.render.com',  # ✅ Correct Host
-            'PORT': '5432',  # ✅ Correct Port
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'railway',  # ✅ Use Railway's Database Name
+            'USER': 'root',  # ✅ Use Railway's Username
+            'PASSWORD': 'rUnxGLhEMqSlxGGeACcThnvIIAVZMDJm',  # ✅ Use Railway's Password
+            'HOST': 'mysql://root:rUnxGLhEMqSlxGGeACcThnvIIAVZMDJm@caboose.proxy.rlwy.net:46813/railway',  # ✅ Replace with Railway's Public Host from "Connect" tab
+            'PORT': '3306',  # ✅ Use Railway's Port
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            },
         }
     }
 else:
-    # Local Development: Use MySQL
+    # Local Development: Use MySQL on localhost
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -93,9 +95,8 @@ else:
     }
 
 
-# Debugging info (Prints which database is being used)
-print(f"Using database: {DATABASES['default']['ENGINE']}")
 
+# Debugging info (Prints which database is being used)
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
