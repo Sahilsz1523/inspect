@@ -71,8 +71,8 @@ if "render.com" in socket.gethostname():
             'NAME': 'railway',  # ✅ Use Railway's Database Name
             'USER': 'root',  # ✅ Use Railway's Username
             'PASSWORD': 'rUnxGLhEMqSlxGGeACcThnvIIAVZMDJm',  # ✅ Use Railway's Password
-            'HOST': 'mysql://root:rUnxGLhEMqSlxGGeACcThnvIIAVZMDJm@caboose.proxy.rlwy.net:46813/railway',  # ✅ Replace with Railway's Public Host from "Connect" tab
-            'PORT': '3306',  # ✅ Use Railway's Port
+            'HOST': 'caboose.proxy.rlwy.net',  # ✅ Replace with Railway's Public Host from "Connect" tab
+            'PORT': '46813',  # ✅ Use Railway's Port
             'OPTIONS': {
                 'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
             },
