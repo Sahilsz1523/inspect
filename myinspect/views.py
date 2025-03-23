@@ -19,13 +19,13 @@ def index(request):
 def about_us(request):
     return render(request, 'about_us.html')
 
-# Contact Form
 def contact(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("success")
+            messages.success(request, "Your message has been sent successfully!")
+            form = ContactForm()  # Reset the form after submission
     else:
         form = ContactForm()
 
@@ -63,35 +63,49 @@ class CustomPasswordResetView(PasswordResetView):
 # Feed Form
 
 
+import base64
+import uuid
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.core.files.base import ContentFile
+from django.contrib.auth.decorators import login_required
+from .models import Visitor  # Import your Visitor model
+
 @login_required
 def add_visitor(request):
     if request.method == "POST":
-        name = request.POST["name"]
-        phone = request.POST["phone"]
-        address = request.POST["address"]
-        email = request.POST["email"]
-        description = request.POST["description"]
-        id_proof_data = request.POST.get("id_proof_data")
+        try:
+            name = request.POST["name"]
+            phone = request.POST["phone"]
+            address = request.POST["address"]
+            email = request.POST["email"]
+            description = request.POST["description"]
+            id_proof_data = request.POST.get("id_proof_data", None)
 
-        image_data = None
-        if id_proof_data:
-            format, imgstr = id_proof_data.split(";base64,")
-            ext = format.split("/")[-1]
-            image_data = ContentFile(base64.b64decode(imgstr), name=f"{uuid.uuid4()}.{ext}")
+            # Handle image data
+            image_data = None
+            if id_proof_data:
+                format, imgstr = id_proof_data.split(";base64,")
+                ext = format.split("/")[-1]
+                image_data = ContentFile(base64.b64decode(imgstr), name=f"{uuid.uuid4()}.{ext}")
 
-        # Save visitor and link to logged-in user
-        visitor = Visitor(
-            user=request.user,
-            name=name,
-            phone=phone,
-            address=address,
-            email=email,
-            description=description,
-            id_proof=image_data
-        )
-        visitor.save()
+            # Save visitor and link to logged-in user
+            visitor = Visitor(
+                user=request.user,
+                name=name,
+                phone=phone,
+                address=address,
+                email=email,
+                description=description,
+                id_proof=image_data
+            )
+            visitor.save()
 
-        return redirect("visitor_form")  # Redirect to visitor list
+            messages.success(request, "Visitor details submitted successfully!")
+            return redirect("visitor_form")  # Redirect to prevent duplicate form submission
+
+        except Exception as e:
+            messages.error(request, "An error occurred while submitting the form.")
 
     return render(request, "visitor_form.html")
 
@@ -99,8 +113,14 @@ def add_visitor(request):
  # Load the form page
 @login_required
 def visitor_list(request):
-    visitors = Visitor.objects.filter(user=request.user)  # Show only current user's visitors
-    return render(request, "visitor_list.html", {"visitors": visitors})
-# Success Page
-def success(request):
-    return render(request, "success.html")
+    query = request.GET.get('search', '')  # Get search query from request
+    visitors = Visitor.objects.filter(user=request.user).order_by('-date_time')
+
+    if query:
+        visitors = visitors.filter(name__icontains=query)  # Filter by visitor name
+
+    # Format the date before sending it to the template
+    for visitor in visitors:
+        visitor.formatted_date = visitor.date_time.strftime("%b %d, %Y %I:%M %p")  
+
+    return render(request, "visitor_list.html", {"visitors": visitors, "search_query": query})

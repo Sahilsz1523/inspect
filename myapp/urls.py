@@ -30,10 +30,6 @@ urlpatterns = [
     path("", views.index, name="index"),
     path('myinspect/', include('myinspect.urls')),
     path('admin/', admin.site.urls),
-    re_path(r'^favicon\.ico$', serve, {
-        'path': 'favicon.ico',
-        'document_root': os.path.join(settings.BASE_DIR, 'myinspect', 'static')
-    }),
 ]
 
 # ✅ Serve media files in development mode

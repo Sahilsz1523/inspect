@@ -1,30 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <div class="container-fluid">
-        <div class="d-flex justify-content-center mt-5">
-            <div class="d-flex gap-3 flex-column">
-                <h3>Contact Form</h3>
-                <form method="post" class="row g-3">
-                    {% csrf_token %}
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="col-12">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="contact-container">
+        <h3 class="text-center">Become a User</h3>
+        <p class="text-center">Fill out the form below, and we will contact you with login details.</p>
+
+        <!-- Success Message Popup -->
+        {% if messages %}
+            <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        </div>
+        {% endif %}
+
+        <form method="post" class="row g-3">
+            {% csrf_token %}
+            <div class="col-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="col-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="col-12">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}" required>
+            </div>
+            <div class="col-12">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn-submit">Submit</button>
+            </div>
+        </form>
     </div>
+</div>
+
+<!-- JavaScript to auto-hide popup message after 3 seconds -->
+<script>
+    setTimeout(function() {
+        let alertBox = document.getElementById("success-alert");
+        if (alertBox) {
+            alertBox.style.transition = "opacity 1s";
+            alertBox.style.opacity = "0";
+            setTimeout(() => alertBox.remove(), 1000);
+        }
+    }, 3000);
+</script>
 
 {% endblock %}

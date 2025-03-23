@@ -13,7 +13,6 @@ urlpatterns = [
     path("login/", views.login_view, name="login_view"),  # Custom login route
     path("visitor_form/", add_visitor, name="visitor_form"),
     path("visitor_list/", visitor_list, name="visitor_list"),
-    path("success/",views.success, name="success"), # Root URL for this app
     path('password-reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),

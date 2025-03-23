@@ -4,17 +4,31 @@
 {% block content %}
 <div class="container">
     <h2>Your Visitors</h2>
+
+    <!-- Search Bar -->
+    <div class="my-3 d-flex justify-content-between">
+        <input type="text" id="searchInput" placeholder="Search visitor by name or date (YYYY-MM-DD)..." class="form-control w-50" onkeyup="searchVisitor()">
+        <a href="{% url 'visitor_form' %}" class="btn btn-info">Visitor Form</a>
+    </div>
+
+    <!-- No Results Message -->
+    <p id="noResultsMessage" style="display: none; color: red; text-align: center;">No visitors found.</p>
+
     <div class="visitor-list">
         {% for visitor in visitors %}
         <div class="visitor-card">
-            <h3>{{ forloop.counter }}. {{ visitor.name }}</h3>
+            <h3 class="visitor-name">{{ forloop.revcounter }}. {{ visitor.name }}</h3>
             <p><strong>1. Phone:</strong> {{ visitor.phone }}</p>
             <p><strong>2. Address:</strong> {{ visitor.address }}</p>
             <p><strong>3. Email:</strong> {{ visitor.email }}</p>
             <p><strong>4. Description:</strong> {{ visitor.description }}</p>
-            <p><strong>5. Date & Time:</strong> {{ visitor.date_time }}</p>
+            
+            <!-- Date and Time Separated -->
+            <p><strong>5. Date:</strong> <span class="visitor-date">{{ visitor.date_time|date:"Y-m-d" }}</span></p>
+            <p><strong>6. Time:</strong> <span class="visitor-time">{{ visitor.date_time|time:"h:i A" }}</span></p>
+
             <div class="visitor-id-proof">
-                <p><strong>6. ID Proof:</strong></p>
+                <p><strong>7. ID Proof:</strong></p>
                 {% if visitor.id_proof %}
                 <img src="{{ visitor.id_proof.url }}" alt="ID Proof" class="id-proof-img">
                 {% else %}
@@ -22,7 +36,39 @@
                 {% endif %}
             </div>
         </div>
+        {% empty %}
+        <p style="text-align: center; color: gray;">No visitors recorded yet.</p>
         {% endfor %}
     </div>
 </div>
+
+<!-- JavaScript for Search Function -->
+<script>
+    function searchVisitor() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let visitorCards = document.querySelectorAll(".visitor-card");
+
+        let hasResults = false;
+
+        visitorCards.forEach(card => {
+            let name = card.querySelector(".visitor-name").textContent.toLowerCase();
+            let date = card.querySelector(".visitor-date").textContent.toLowerCase(); 
+
+            if (name.includes(input) || date.includes(input)) {
+                card.style.display = "block";
+                hasResults = true;
+            } else {
+                card.style.display = "none";
+            }
+        });
+
+        let noResultsMessage = document.getElementById("noResultsMessage");
+        if (!hasResults) {
+            noResultsMessage.style.display = "block";
+        } else {
+            noResultsMessage.style.display = "none";
+        }
+    }
+</script>
+
 {% endblock %}
