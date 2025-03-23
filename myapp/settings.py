@@ -65,7 +65,7 @@ if os.getenv('DJANGO_ENV') == 'production':
             'ENGINE': 'django.db.backends.mysql',
             'NAME': os.getenv('DB_NAME', 'railway'),  # Railway database name
             'USER': os.getenv('DB_USER', 'root'),  # Railway username
-            'PASSWORD': os.getenv('DB_PASSWORD', '2005'),  # Railway password
+            'PASSWORD': os.getenv('DB_PASSWORD', 'xNCDNIXVvuqqRbaEtLHNEXgyJQOpsKgh'),  # Railway password
             'HOST': os.getenv('DB_HOST', 'monorail.proxy.rlwy.net'),  # Railway host
             'PORT': os.getenv('DB_PORT', '3307'),  # Railway port
             'OPTIONS': {
