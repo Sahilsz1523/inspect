@@ -77,7 +77,7 @@ html, body {
 
 /* Active Page Styling */
 .nav-link.active {
-    background-color: #001122; /* Darker background for active page */
+    background-color: #001122;
     font-weight: bold;
 }
 
@@ -86,7 +86,7 @@ html, body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* ================= ABOUT US SECTION ================= */
+/* =================== ABOUT US SECTION ================= */
 .about-section {
     background: white;
     padding: 50px 0;
@@ -108,94 +108,172 @@ html, body {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
+/* =================== VISITOR LIST STYLES =================== */
 
-/* ================= WHY INSPECT SECTION ================= */
-.text-danger {
-    color: #d9534f;
-    font-weight: bold;
+/* Visitor List Container */
+.visitor-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(145deg, #f9f9f9, #eaeaea);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.text-success {
-    color: #5cb85c;
-    font-weight: bold;
-}
-
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-ul li {
-    font-size: 16px;
-    margin: 8px 0;
-    padding-left: 25px;
-    position: relative;
-}
-
-
-/* ================= FEATURES TABLE ================= */
-.features-table {
-    background: white;
-    color: black;
-    width: 100%;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.features-table thead {
-    background: #003366;
-    color: white;
-}
-
-.features-table th, 
-.features-table td {
-    padding: 15px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-.features-table tbody tr:hover {
-    background: #f1f1f1;
-}
-
-/* ================= MISSION & VISION SECTION ================= */
-.text-primary {
-    color: #0275d8;
-}
-
-.text-success {
-    color: #5cb85c;
-}
-
-.text-center {
-    text-align: center;
-}
-
-/* ================= VISITOR LIST ================= */
+/* Individual Visitor Card */
 .visitor-card {
     background: white;
     color: black;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 15px;
-    transition: 0.3s ease-in-out;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Hover Effect for Visitor Card */
 .visitor-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Visitor Card Headings */
+.visitor-card h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #003366;
+    position: relative;
+    z-index: 1;
+}
+
+/* Visitor Details */
+.visitor-card p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
 }
 
 /* ID Proof Image */
-.id-proof-img {
-    max-width: 100px;
-    max-height: 100px;
-    border-radius: 5px;
-    margin-top: 5px;
+.visitor-id-proof {
+    margin-top: 15px;
+    text-align: center;
 }
 
+.id-proof-img {
+    max-width: 120px;
+    max-height: 120px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.id-proof-img:hover {
+    transform: scale(1.1);
+    border-color: #003366;
+}
+
+/* Add a subtle background pattern to the card */
+.visitor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, rgba(0, 51, 102, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+.visitor-card:hover::before {
+    opacity: 1;
+}
+
+/* Add a subtle gradient border effect */
+.visitor-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(145deg, rgba(0, 51, 102, 0.1), rgba(0, 51, 102, 0.05));
+    border-radius: 17px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.visitor-card:hover::after {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .visitor-list {
+        padding: 15px;
+    }
+
+    .visitor-card {
+        padding: 15px;
+    }
+
+    .visitor-card h3 {
+        font-size: 20px;
+    }
+
+    .visitor-card p {
+        font-size: 14px;
+    }
+
+    .id-proof-img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+}
+
+/* Add a subtle animation to the card on load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.visitor-card {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Add a hover effect to the visitor details */
+.visitor-card p {
+    transition: color 0.3s ease-in-out;
+}
+
+.visitor-card:hover p {
+    color: #003366;
+}
+
+/* Add a subtle shadow to the ID proof image */
+.id-proof-img {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a hover effect to the ID proof image */
+.id-proof-img:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
 /* ================= SOCIAL ICONS ================= */
 .social-icons {
     display: flex;
@@ -206,7 +284,7 @@ ul li {
 
 /* Small Icons */
 .social-icons img {
-    width: 25px;  /* Adjust the size */
+    width: 25px;
     height: 25px;
     border-radius: 50%;
     transition: 0.3s;
@@ -227,22 +305,12 @@ ul li {
         padding: 30px 15px;
     }
 
-    .features-table th, 
-    .features-table td {
-        padding: 10px;
-    }
-
     .nav-menu {
         flex-direction: column;
         align-items: center;
         gap: 10px;
     }
-
-    .visitor-card {
-        padding: 10px;
-    }
 }
-
 /* Creator Card Styling */
 .card {
     border-radius: 15px;
@@ -321,4 +389,135 @@ ul li {
         opacity: 1;
         transform: translateX(0);
     }
+}
+/* Fix Carousel Image */
+.carousel-item img {
+    height: 400px; /* Adjust as needed */
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Carousel Container */
+#carouselExample {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Fix Creator Cards */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.card img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.access-box {
+    text-align: center;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto; /* Centering */
+}
+
+/* ================= FULL-SCREEN LOADER ================= */
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+    transition: opacity 1s ease-out;
+}
+
+.loader-image {
+    max-width: 50%;
+    max-height: 80vh;
+    object-fit: cover;
+    animation: zoomInOut 2s ease-in-out infinite;
+}
+
+/* Zoom-In/Out Effect */
+@keyframes zoomInOut {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Hide Loader After Animation */
+.hide-loader {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Smooth Appearance for Page Content */
+#content {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+}
+.contact-container {
+    background: #f9f9f9;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+h3 {
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+form .form-label {
+    font-weight: bold;
+}
+
+form .form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.btn-submit {
+    background: blue;
+    color:white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-submit:hover {
+    background: #333;
+}
+
+.alert {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90%;
+    z-index: 1000;
 }
